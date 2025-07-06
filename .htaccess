@@ -1,0 +1,11 @@
+# Active le module de réécriture d'URL d'Apache
+RewriteEngine On
+
+# Ne réécrit pas les requêtes pour des fichiers qui existent déjà physiquement
+RewriteCond %{REQUEST_FILENAME} !-f
+# Ne réécrit pas les requêtes pour des répertoires qui existent déjà physiquement
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrit toutes les autres requêtes vers le routeur principal index.php
+# Le drapeau [L] signifie que c'est la dernière règle à appliquer.
+RewriteRule . index.php [L] 
